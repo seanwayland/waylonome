@@ -15,7 +15,7 @@ class Metronome
         // a value for "swing" between zero and one hundred
         this.swing = swing;
         this.accent = accent;
-        this.barLength = 8;
+        this.barLength = 9;
         this.currentEighthNote = 0
 
       
@@ -41,8 +41,9 @@ class Metronome
 
     
         this.currentQuarterNote++;    // Advance the beat number, wrap to zero
-        if (this.currentQuarterNote == this.accent) {
+        if (this.currentQuarterNote == (this.barLength)) {
             this.currentQuarterNote = 0;
+            console.log("here")
         }
 
         if (this.currentEighthNote == 0){
@@ -60,7 +61,9 @@ class Metronome
         const osc = this.audioContext.createOscillator();
         const envelope = this.audioContext.createGain();
         
-        osc.frequency.value = (beatNumber % this.accent == 0) ? 1000 : 800;
+        if (this.currentQuarterNote == 0){osc.frequency.value = 2000 }
+        else{
+        osc.frequency.value = (beatNumber % this.accent == 0) ? 1000 : 800;}
         envelope.gain.value = 1;
         envelope.gain.exponentialRampToValueAtTime(1, time + 0.001);
         envelope.gain.exponentialRampToValueAtTime(0.001, time + 0.02);

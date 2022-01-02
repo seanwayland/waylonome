@@ -8,6 +8,9 @@ accent.textContent = metronome.accent;
 var swing = document.getElementById('swing');
 swing.textContent = metronome.swing;
 
+var swing = document.getElementById('bar');
+bar.textContent = metronome.barLength;
+
 var playPauseIcon = document.getElementById('play-pause-icon');
 
 var playButton = document.getElementById('play-button');
@@ -44,6 +47,14 @@ for (var i = 0; i < swingChangeButtons.length; i++) {
     swingChangeButtons[i].addEventListener('click', function() {
         metronome.swing += parseInt(this.dataset.change);
         swing.textContent = metronome.swing;
+    });
+}
+
+var barChangeButtons = document.getElementsByClassName('bar-change');
+for (var i = 0; i < barChangeButtons.length; i++) {
+    barChangeButtons[i].addEventListener('click', function() {
+        metronome.barLength += parseInt(this.dataset.change);
+        bar.textContent = metronome.barLength;
     });
 }
 
