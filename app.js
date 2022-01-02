@@ -8,7 +8,7 @@ accent.textContent = metronome.accent;
 var swing = document.getElementById('swing');
 swing.textContent = metronome.swing;
 
-var swing = document.getElementById('bar');
+var bar = document.getElementById('bar');
 bar.textContent = metronome.barLength;
 
 var playPauseIcon = document.getElementById('play-pause-icon');
